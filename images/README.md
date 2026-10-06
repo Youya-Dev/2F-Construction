@@ -1,6 +1,7 @@
 # Gallery photos
 
 Add project photos here named `project-1.jpg` to `project-8.jpg`.
-They appear in the "Recent projects" carousel in the same order.
-Landscape photos (4:3) look best. Update each caption in `index.html`
-to match the photo.
+They appear on the Gallery page (carousel and grid) in the same order,
+and the first three also appear under "Recent projects" on the Home page.
+Landscape photos (4:3) look best. Update each caption in `gallery.html`
+(and `index.html` for the first three) to match the photo.
