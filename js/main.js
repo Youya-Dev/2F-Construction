@@ -165,31 +165,6 @@ document.querySelectorAll('.carousel').forEach(carousel => {
   onScroll();
 })();
 
-// Sections ease into view as you scroll
-(function () {
-  if (!('IntersectionObserver' in window)) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const targets = document.querySelectorAll(
-    'main section h2, main section .lead, .card, .point, .service, .steps li, .tile, .review, .ba, .quick li, .contact-box'
-  );
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      e.target.classList.add('in');
-      io.unobserve(e.target);
-    });
-  }, { rootMargin: '0px 0px -40px 0px' });
-  targets.forEach(el => {
-    // Stagger items that sit side by side in a row
-    const siblings = [...el.parentElement.children].filter(c => c.tagName === el.tagName);
-    const i = siblings.indexOf(el);
-    if (siblings.length > 1) el.style.transitionDelay = (i % 4) * 80 + 'ms';
-    el.classList.add('reveal');
-    io.observe(el);
-  });
-  document.documentElement.classList.add('js-reveal');
-})();
-
 // Before and after sliders
 document.querySelectorAll('.ba-frame').forEach(frame => {
   const range = frame.querySelector('.ba-range');
