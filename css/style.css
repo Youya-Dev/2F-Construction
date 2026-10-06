@@ -407,7 +407,7 @@ header { background: var(--dark); border-bottom: 4px solid var(--accent); backdr
 .logo { display: inline-flex; align-items: center; gap: 10px; color: #fff; }
 .logo .mark {
   display: grid; place-items: center; width: 42px; height: 42px; border-radius: 3px;
-  background: var(--accent); color: #fff; font-weight: 700; font-size: 1.3rem;
+  background: var(--accent); color: #fff; font-family: var(--body); font-weight: 700; font-size: 1.35rem; line-height: 1; letter-spacing: .01em; padding-top: 1px;
 }
 .logo .word { font-weight: 600; font-size: 1.3rem; color: #fff; }
 .menu a { color: #d5dce4; font-weight: 600; }
