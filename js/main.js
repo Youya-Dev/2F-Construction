@@ -89,8 +89,9 @@ document.querySelectorAll('.carousel').forEach(carousel => {
   if (!form) return;
 
   const service = new URLSearchParams(location.search).get('service');
-  if (service && form.service.querySelector(`option[value="${CSS.escape(service)}"]`)) {
-    form.service.value = service;
+  const choice = service && form.querySelector(`input[name="service"][value="${CSS.escape(service)}"]`);
+  if (choice) {
+    choice.checked = true;
   }
 
   const status = form.querySelector('.form-status');
@@ -242,4 +243,41 @@ document.querySelectorAll('.ba-frame').forEach(frame => {
     if (e.key === 'ArrowLeft') show(pos - 1);
     if (e.key === 'ArrowRight') show(pos + 1);
   });
+})();
+
+// Services tabs: show one service at a time (all show if JavaScript is off)
+(function () {
+  const tabs = [...document.querySelectorAll('.tab-list [role="tab"]')];
+  if (!tabs.length) return;
+  const panels = tabs.map(t => document.getElementById(t.getAttribute('aria-controls')));
+  function select(i, focus) {
+    tabs.forEach((t, n) => {
+      const on = n === i;
+      t.setAttribute('aria-selected', on);
+      t.tabIndex = on ? 0 : -1;
+      panels[n].hidden = !on;
+    });
+    if (focus) tabs[i].focus();
+  }
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => { select(i); history.replaceState(null, '', '#' + panels[i].id); });
+    t.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') select((i + 1) % tabs.length, true);
+      if (e.key === 'ArrowLeft') select((i - 1 + tabs.length) % tabs.length, true);
+    });
+  });
+  // Links like services.html#carpentry open that tab
+  const start = panels.findIndex(p => '#' + p.id === location.hash);
+  select(start < 0 ? 0 : start);
+  document.querySelector('.tabs').classList.add('tabs-on');
+})();
+
+// Phone call bar: appears once you scroll past the banner
+(function () {
+  const bar = document.querySelector('.callbar');
+  const hero = document.querySelector('.hero');
+  if (!bar || !hero) return;
+  const update = () => bar.classList.toggle('show', hero.getBoundingClientRect().bottom < 0);
+  window.addEventListener('scroll', update, { passive: true });
+  update();
 })();

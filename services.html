@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap">
-  <link rel="stylesheet" href="css/style.css?v=89af98f8">
+  <link rel="stylesheet" href="css/style.css?v=e1690b85">
 </head>
 <body id="top">
 
@@ -40,8 +40,13 @@
     </section>
 
     <section>
-      <div class="wrap">
-        <article class="service reveal" id="renovations">
+      <div class="wrap tabs">
+        <div class="tab-list" role="tablist" aria-label="Our services">
+          <button type="button" role="tab" id="tab-renovations" aria-controls="renovations" aria-selected="true"><span class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg></span><span class="long">Building renovations</span><span class="short">Renovations</span></button>
+          <button type="button" role="tab" id="tab-carpentry" aria-controls="carpentry" aria-selected="false"><span class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 12-8.5 8.5a2.12 2.12 0 0 1-3-3L12 9"/><path d="M17.64 15 22 10.64"/><path d="m20.91 11.7-1.25-1.25a2 2 0 0 1-.6-1.41V7.86l-2.6-2.6a5 5 0 0 0-3.53-1.46H9.5l.92.82A6.18 6.18 0 0 1 12.5 9.2v1.24l2 2h1.17a2 2 0 0 1 1.41.59l1.25 1.25"/></svg></span><span class="long">Carpentry &amp; joinery</span><span class="short">Carpentry</span></button>
+          <button type="button" role="tab" id="tab-painting" aria-controls="painting" aria-selected="false"><span class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="16" height="6" rx="1.5"/><path d="M19 6h2v5h-9v3"/><rect x="10" y="14" width="4" height="7" rx="1"/></svg></span><span class="long">Painting &amp; decorating</span><span class="short">Decorating</span></button>
+        </div>
+        <article class="service" id="renovations" role="tabpanel" aria-labelledby="tab-renovations">
           <div>
             <h2><span class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg></span>Building renovations</h2>
             <p>Whether you are reconfiguring a room or adding an extension, we manage the work from the first visit to the final clean. One team covers the building work, joinery and decorating, so there is no waiting between trades.</p>
@@ -55,7 +60,7 @@
             <li>General building repairs</li>
           </ul>
         </article>
-        <article class="service reveal" id="carpentry">
+        <article class="service" id="carpentry" role="tabpanel" aria-labelledby="tab-carpentry">
           <div>
             <h2><span class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 12-8.5 8.5a2.12 2.12 0 0 1-3-3L12 9"/><path d="M17.64 15 22 10.64"/><path d="m20.91 11.7-1.25-1.25a2 2 0 0 1-.6-1.41V7.86l-2.6-2.6a5 5 0 0 0-3.53-1.46H9.5l.92.82A6.18 6.18 0 0 1 12.5 9.2v1.24l2 2h1.17a2 2 0 0 1 1.41.59l1.25 1.25"/></svg></span>Carpentry &amp; joinery</h2>
             <p>From hanging a single door to building a staircase, our carpentry is measured, cut and fitted with care. We make bespoke joinery to suit your home and fit ready-made items properly.</p>
@@ -69,7 +74,7 @@
             <li>Decking, fencing &amp; garden structures</li>
           </ul>
         </article>
-        <article class="service reveal" id="painting">
+        <article class="service" id="painting" role="tabpanel" aria-labelledby="tab-painting">
           <div>
             <h2><span class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="16" height="6" rx="1.5"/><path d="M19 6h2v5h-9v3"/><rect x="10" y="14" width="4" height="7" rx="1"/></svg></span>Painting &amp; decorating</h2>
             <p>A good finish comes from good preparation. We protect your furniture and floors, fill and sand surfaces properly, and use quality paints so the result lasts.</p>
@@ -137,6 +142,11 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=b4e5b53d"></script>
+  <div class="callbar" aria-label="Quick contact">
+    <a href="tel:+440000000000" class="callbar-call"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call us</a>
+    <a href="contact.html" class="callbar-quote">Get a quote</a>
+  </div>
+
+  <script src="js/main.js?v=d559ab4a"></script>
 </body>
 </html>
