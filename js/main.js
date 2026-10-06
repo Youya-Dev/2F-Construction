@@ -13,8 +13,13 @@ document.querySelectorAll('.year').forEach(el => { el.textContent = new Date().g
 })();
 
 // Missing photos: keep the "Photo coming soon" placeholder
-document.querySelectorAll('.photo img').forEach(img => {
-  const drop = () => img.remove();
+document.querySelectorAll('.photo img, .ba-img img').forEach(img => {
+  const drop = () => {
+    const box = img.parentElement;
+    img.remove();
+    box.classList.remove('zoomable');
+    ['role', 'tabindex', 'aria-label'].forEach(a => box.removeAttribute(a));
+  };
   if (img.complete && img.naturalWidth === 0) drop();
   else img.addEventListener('error', drop);
 });
@@ -150,5 +155,116 @@ document.querySelectorAll('.carousel').forEach(carousel => {
     input.setAttribute('aria-invalid', 'false');
     const err = form.querySelector('#' + input.id + '-error');
     if (err) err.textContent = '';
+  });
+})();
+
+// Header shadow on scroll
+(function () {
+  const onScroll = () => document.documentElement.classList.toggle('scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+// Sections ease into view as you scroll
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const targets = document.querySelectorAll(
+    'main section h2, main section .lead, .card, .point, .service, .steps li, .tile, .review, .ba, .quick li, .contact-box'
+  );
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -40px 0px' });
+  targets.forEach(el => {
+    // Stagger items that sit side by side in a row
+    const siblings = [...el.parentElement.children].filter(c => c.tagName === el.tagName);
+    const i = siblings.indexOf(el);
+    if (siblings.length > 1) el.style.transitionDelay = (i % 4) * 80 + 'ms';
+    el.classList.add('reveal');
+    io.observe(el);
+  });
+  document.documentElement.classList.add('js-reveal');
+})();
+
+// Before and after sliders
+document.querySelectorAll('.ba-frame').forEach(frame => {
+  const range = frame.querySelector('.ba-range');
+  const set = () => frame.style.setProperty('--pos', range.value + '%');
+  range.addEventListener('input', set);
+  set();
+});
+
+// Photo lightbox: click any gallery photo to see it larger
+(function () {
+  const groups = new Map();
+  document.querySelectorAll('.tiles, .track').forEach(group => {
+    const items = [];
+    group.querySelectorAll('figure').forEach(fig => {
+      const img = fig.querySelector('.photo img');
+      if (!img) return;
+      const photo = img.parentElement;
+      photo.classList.add('zoomable');
+      photo.tabIndex = 0;
+      photo.setAttribute('role', 'button');
+      photo.setAttribute('aria-label', 'View larger photo: ' + img.alt);
+      items.push({ fig, img, photo });
+    });
+    if (items.length) groups.set(group, items);
+  });
+  if (!groups.size) return;
+
+  const dlg = document.createElement('dialog');
+  dlg.className = 'lightbox';
+  dlg.setAttribute('aria-label', 'Photo viewer');
+  dlg.innerHTML = `
+    <button class="lb-btn lb-close" type="button" aria-label="Close">✕</button>
+    <button class="lb-btn lb-prev" type="button" aria-label="Previous photo">‹</button>
+    <button class="lb-btn lb-next" type="button" aria-label="Next photo">›</button>
+    <figure><img alt=""><figcaption><strong></strong><span></span></figcaption></figure>`;
+  document.body.appendChild(dlg);
+  const big = dlg.querySelector('img');
+  const title = dlg.querySelector('figcaption strong');
+  const count = dlg.querySelector('figcaption span');
+  const prev = dlg.querySelector('.lb-prev');
+  const next = dlg.querySelector('.lb-next');
+  let list = [], pos = 0;
+
+  function show(i) {
+    // Skip hidden tiles (filtered out) and photos that failed to load
+    const visible = list.filter(it => !it.fig.hidden && it.img.isConnected);
+    if (!visible.length) return dlg.close();
+    pos = (i + visible.length) % visible.length;
+    const it = visible[pos];
+    big.src = it.img.currentSrc || it.img.src;
+    big.alt = it.img.alt;
+    title.textContent = it.fig.querySelector('figcaption strong')?.textContent || '';
+    count.textContent = visible.length > 1 ? (pos + 1) + ' of ' + visible.length : '';
+    prev.hidden = next.hidden = visible.length < 2;
+    list._visible = visible;
+  }
+
+  groups.forEach(items => items.forEach(it => {
+    const open = () => {
+      if (!it.img.isConnected) return; // no photo yet, just the placeholder
+      list = items;
+      const visible = items.filter(x => !x.fig.hidden && x.img.isConnected);
+      show(visible.indexOf(it));
+      dlg.showModal();
+    };
+    it.photo.addEventListener('click', open);
+    it.photo.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+  }));
+
+  dlg.querySelector('.lb-close').addEventListener('click', () => dlg.close());
+  prev.addEventListener('click', () => show(pos - 1));
+  next.addEventListener('click', () => show(pos + 1));
+  dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+  dlg.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') show(pos - 1);
+    if (e.key === 'ArrowRight') show(pos + 1);
   });
 })();
