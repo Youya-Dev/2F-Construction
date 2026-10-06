@@ -503,3 +503,17 @@ footer .btn:hover { text-decoration: none; }
 .field input:focus, .field select:focus, .field textarea:focus { box-shadow: 0 0 0 3px var(--accent-soft); }
 .find-us h3 { font-family: var(--body); }
 .note { border-radius: var(--radius); border-left: 4px solid var(--accent); }
+
+/* Home page signposts to the other pages */
+.signposts { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.signpost {
+  display: flex; flex-direction: column; gap: 8px; text-decoration: none; color: var(--ink);
+  background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--accent);
+  border-radius: var(--radius); padding: 26px 28px; transition: border-color .2s;
+}
+.signpost:hover { border-color: #bfb4a4; border-top-color: var(--accent-dark); }
+.signpost h3 { margin: 0; font-size: 1.35rem; }
+.signpost p { margin: 0; color: var(--muted); }
+.signpost span { margin-top: auto; padding-top: 10px; color: var(--accent); font-weight: 700; }
+.signpost span::after { content: " \2192"; }
+.signpost:hover span { text-decoration: underline; }
