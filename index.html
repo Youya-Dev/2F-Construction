@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NG Construction | Renovations, Carpentry &amp; Decorating</title>
-  <meta name="description" content="NG Construction: building renovations, carpentry and joinery, and painting and decorating. Get in touch for a free quote.">
+  <title>2F Construction | Renovations, Carpentry &amp; Decorating</title>
+  <meta name="description" content="2F Construction: building renovations, carpentry and joinery, and painting and decorating. Get in touch for a free quote.">
   <style>
     :root {
       --ink: #1f2328;
@@ -108,6 +108,51 @@
     .contact-list a:hover { text-decoration: underline; }
     .contact-list svg { flex: none; color: var(--accent); }
 
+
+    /* Gallery carousel */
+    .gallery { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .carousel { position: relative; }
+    .track {
+      display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory;
+      scroll-behavior: smooth; scrollbar-width: none; padding-bottom: 4px;
+    }
+    .track::-webkit-scrollbar { display: none; }
+    .slide {
+      flex: 0 0 calc((100% - 40px) / 3); scroll-snap-align: start; margin: 0;
+      border-radius: var(--radius); overflow: hidden; background: var(--card);
+      border: 1px solid var(--line);
+    }
+    .slide .photo {
+      position: relative; aspect-ratio: 4 / 3;
+      display: grid; place-items: center; color: #a39a8e; font-size: .9rem;
+      background: repeating-linear-gradient(45deg, #f3eee7 0 12px, #ece6dc 12px 24px);
+    }
+    .slide img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .slide figcaption { padding: 14px 18px; }
+    .slide figcaption strong { display: block; }
+    .slide figcaption span { color: var(--muted); font-size: .9rem; }
+    .car-btn {
+      position: absolute; top: 38%; transform: translateY(-50%); z-index: 2;
+      width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line);
+      background: #fff; color: var(--ink); cursor: pointer; display: grid; place-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,.12);
+    }
+    .car-btn:hover { color: var(--accent); }
+    .car-btn:disabled { opacity: .35; cursor: default; }
+    .car-btn.prev { left: -22px; }
+    .car-btn.next { right: -22px; }
+    .dots { display: flex; justify-content: center; gap: 8px; margin-top: 24px; }
+    .dots button {
+      width: 10px; height: 10px; border-radius: 50%; border: 0; padding: 0;
+      background: var(--line); cursor: pointer;
+    }
+    .dots button[aria-current="true"] { background: var(--accent); width: 26px; border-radius: 5px; }
+    @media (max-width: 900px) { .slide { flex-basis: calc((100% - 20px) / 2); } }
+    @media (max-width: 640px) {
+      .slide { flex-basis: 85%; }
+      .car-btn { display: none; }
+    }
+
     footer { padding: 32px 0; color: var(--muted); font-size: .9rem; text-align: center; }
 
     @media (max-width: 640px) {
@@ -122,10 +167,11 @@
 
   <header>
     <div class="wrap nav">
-      <a href="#" class="logo">NG <span>Construction</span></a>
+      <a href="#" class="logo">2F <span>Construction</span></a>
       <nav>
         <ul>
           <li><a href="#services">Services</a></li>
+          <li><a href="#gallery">Our work</a></li>
           <li><a href="#why">Why us</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -137,7 +183,7 @@
   <section class="hero">
     <div class="wrap">
       <h1>Quality building work, done properly.</h1>
-      <p>From full renovations to bespoke joinery and a fresh coat of paint, NG Construction delivers reliable, tidy and well-finished work for homes and businesses.</p>
+      <p>From full renovations to bespoke joinery and a fresh coat of paint, 2F Construction delivers reliable, tidy and well-finished work for homes and businesses.</p>
       <div class="actions">
         <a href="#contact" class="btn">Get a free quote</a>
         <a href="#services" class="btn ghost">Our services</a>
@@ -197,7 +243,55 @@
     </div>
   </section>
 
-  <section id="why" class="why">
+  <section id="gallery" class="gallery">
+    <div class="wrap">
+      <p class="eyebrow">Our work</p>
+      <h2>Recent projects</h2>
+      <p class="lead">A selection of jobs we're proud of. Swipe or use the arrows to browse.</p>
+
+      <div class="carousel" aria-roledescription="carousel" aria-label="Project gallery">
+        <button class="car-btn prev" type="button" aria-label="Previous projects"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+        <div class="track" tabindex="0">
+          <figure class="slide">
+            <div class="photo">Photo coming soon<img src="images/project-1.jpg" alt="Kitchen renovation" loading="lazy" onerror="this.remove()"></div>
+            <figcaption><strong>Kitchen renovation</strong><span>Building renovations</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <div class="photo">Photo coming soon<img src="images/project-2.jpg" alt="Bathroom refit" loading="lazy" onerror="this.remove()"></div>
+            <figcaption><strong>Bathroom refit</strong><span>Building renovations</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <div class="photo">Photo coming soon<img src="images/project-3.jpg" alt="House extension" loading="lazy" onerror="this.remove()"></div>
+            <figcaption><strong>House extension</strong><span>Building renovations</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <div class="photo">Photo coming soon<img src="images/project-4.jpg" alt="Bespoke staircase" loading="lazy" onerror="this.remove()"></div>
+            <figcaption><strong>Bespoke staircase</strong><span>Carpentry &amp; joinery</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <div class="photo">Photo coming soon<img src="images/project-5.jpg" alt="Fitted wardrobes" loading="lazy" onerror="this.remove()"></div>
+            <figcaption><strong>Fitted wardrobes</strong><span>Carpentry &amp; joinery</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <div class="photo">Photo coming soon<img src="images/project-6.jpg" alt="Garden decking" loading="lazy" onerror="this.remove()"></div>
+            <figcaption><strong>Garden decking</strong><span>Carpentry &amp; joinery</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <div class="photo">Photo coming soon<img src="images/project-7.jpg" alt="Living room redecoration" loading="lazy" onerror="this.remove()"></div>
+            <figcaption><strong>Living room redecoration</strong><span>Painting &amp; decorating</span></figcaption>
+          </figure>
+          <figure class="slide">
+            <div class="photo">Photo coming soon<img src="images/project-8.jpg" alt="Exterior repaint" loading="lazy" onerror="this.remove()"></div>
+            <figcaption><strong>Exterior repaint</strong><span>Painting &amp; decorating</span></figcaption>
+          </figure>
+        </div>
+        <button class="car-btn next" type="button" aria-label="Next projects"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+        <div class="dots" role="group" aria-label="Choose slide"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
     <div class="wrap">
       <p class="eyebrow">Why choose us</p>
       <h2>Work you can rely on</h2>
@@ -251,10 +345,58 @@
 
   <footer>
     <div class="wrap">
-      &copy; <span id="year"></span> NG Construction. All rights reserved.
+      &copy; <span id="year"></span> 2F Construction. All rights reserved.
     </div>
   </footer>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Gallery carousel
+    (function () {
+      const track = document.querySelector('.track');
+      const slides = [...track.children];
+      const prev = document.querySelector('.car-btn.prev');
+      const next = document.querySelector('.car-btn.next');
+      const dotsBox = document.querySelector('.dots');
+      const step = () => slides[1].offsetLeft - slides[0].offsetLeft;
+      const perView = () => Math.max(1, Math.round(track.clientWidth / step()));
+      const pages = () => Math.max(1, slides.length - perView() + 1);
+      const current = () => Math.round(track.scrollLeft / step());
+
+      function goTo(i) {
+        track.scrollTo({ left: Math.max(0, Math.min(i, pages() - 1)) * step() });
+      }
+
+      function buildDots() {
+        dotsBox.innerHTML = '';
+        for (let i = 0; i < pages(); i++) {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+          b.addEventListener('click', () => goTo(i));
+          dotsBox.appendChild(b);
+        }
+        update();
+      }
+
+      function update() {
+        const i = current();
+        [...dotsBox.children].forEach((d, n) => d.setAttribute('aria-current', n === i));
+        prev.disabled = i <= 0;
+        next.disabled = i >= pages() - 1;
+      }
+
+      prev.addEventListener('click', () => goTo(current() - 1));
+      next.addEventListener('click', () => goTo(current() + 1));
+      track.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+      track.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current() - 1); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current() + 1); }
+      });
+      window.addEventListener('resize', buildDots);
+      buildDots();
+    })();
+  </script>
 </body>
 </html>
