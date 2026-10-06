@@ -476,3 +476,30 @@ footer .btn:hover { text-decoration: none; }
 }
 .contact-box, .enquiry, .find-us, .lightbox img { border-radius: var(--radius); }
 .dots button[aria-current="true"] { border-radius: 2px; }
+
+/* Traditional finish carried through the inner pages */
+.filters { gap: 0; border-bottom: 2px solid var(--line); }
+.filters button {
+  border: 0; border-radius: 0; background: none; color: var(--muted); font-weight: 600;
+  padding: 10px 18px; margin-bottom: -2px; border-bottom: 3px solid transparent;
+}
+.filters button:hover { color: var(--ink); }
+.filters button[aria-pressed="true"] { background: none; color: var(--ink); border-bottom-color: var(--accent); }
+
+.car-btn, .lb-btn { border-radius: var(--radius); box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+.dots button { width: 22px; height: 4px; border-radius: 0; }
+.dots button[aria-current="true"] { width: 34px; border-radius: 0; }
+
+.steps li::before { border-radius: 3px; font-family: var(--display); font-size: 1.15rem; }
+
+.review { border-top: 4px solid var(--accent); }
+.review.placeholder { border-top-style: solid; }
+.stars { color: var(--accent); }
+.review blockquote { font-size: 1.05rem; }
+
+.quick a { border-top: 4px solid var(--accent); }
+.enquiry { border-top: 4px solid var(--accent); }
+.field input, .field select, .field textarea { background: #fff; border: 1px solid #c9bfb1; border-radius: var(--radius); }
+.field input:focus, .field select:focus, .field textarea:focus { box-shadow: 0 0 0 3px var(--accent-soft); }
+.find-us h3 { font-family: var(--body); }
+.note { border-radius: var(--radius); border-left: 4px solid var(--accent); }
