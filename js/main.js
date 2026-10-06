@@ -13,7 +13,7 @@ document.querySelectorAll('.year').forEach(el => { el.textContent = new Date().g
 })();
 
 // Missing photos: keep the "Photo coming soon" placeholder
-document.querySelectorAll('.photo img, .ba-img img').forEach(img => {
+document.querySelectorAll('.photo img, .ba-img img, .hero-bg img').forEach(img => {
   const drop = () => {
     const box = img.parentElement;
     img.remove();
