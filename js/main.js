@@ -120,7 +120,7 @@ document.querySelectorAll('.carousel').forEach(carousel => {
 
     // The form is not connected to an inbox until a real Formspree form ID is set
     if (form.action.includes('YOUR_FORM_ID')) {
-      showStatus('ok', 'Test mode: your details look good, but this form is not connected to an inbox yet, so nothing was sent.');
+      showStatus('ok', 'Test mode: the form works, but it isn’t connected to an inbox yet, so nothing was sent.');
       return;
     }
 
@@ -134,12 +134,12 @@ document.querySelectorAll('.carousel').forEach(carousel => {
       });
       if (!res.ok) throw new Error(res.status);
       form.reset();
-      showStatus('ok', 'Thanks, your enquiry has been sent. We will be in touch within 1 working day.');
+      showStatus('ok', 'Thanks, your message has been sent. We’ll be in touch soon.');
     } catch {
-      showStatus('err', 'Your enquiry could not be sent. Please try again, or call or email us directly.');
+      showStatus('err', 'Sorry, that didn’t send. Please try again, or give us a call.');
     } finally {
       submit.disabled = false;
-      submit.textContent = 'Submit';
+      submit.textContent = 'Send message';
     }
   });
 
