@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NG Construction | Renovations, Carpentry &amp; Decorating</title>
+  <meta name="description" content="NG Construction: building renovations, carpentry and joinery, and painting and decorating. Get in touch for a free quote.">
+  <style>
+    :root {
+      --ink: #1f2328;
+      --muted: #5b636d;
+      --bg: #faf8f5;
+      --card: #ffffff;
+      --line: #e6e1d9;
+      --accent: #c2611f;
+      --accent-dark: #9e4d16;
+      --dark: #23272d;
+      --radius: 10px;
+      --max: 1100px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255,255,255,.95);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(6px);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { font-weight: 800; font-size: 1.25rem; letter-spacing: .02em; text-decoration: none; }
+    .logo span { color: var(--accent); }
+    nav ul { list-style: none; display: flex; gap: 24px; margin: 0; padding: 0; }
+    nav a { text-decoration: none; color: var(--muted); font-weight: 500; }
+    nav a:hover { color: var(--ink); }
+
+    .btn {
+      display: inline-block; padding: 12px 22px; border-radius: var(--radius);
+      background: var(--accent); color: #fff; font-weight: 600; text-decoration: none;
+      transition: background .15s;
+    }
+    .btn:hover { background: var(--accent-dark); }
+    .btn.ghost { background: transparent; border: 2px solid #fff; }
+    .btn.ghost:hover { background: rgba(255,255,255,.1); }
+
+    /* Hero */
+    .hero {
+      background:
+        linear-gradient(135deg, rgba(35,39,45,.92), rgba(35,39,45,.80)),
+        repeating-linear-gradient(90deg, #3a3f46 0 2px, transparent 2px 80px),
+        var(--dark);
+      color: #fff;
+      padding: 96px 0 88px;
+    }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.15; margin: 0 0 16px; max-width: 16ch; }
+    .hero p { font-size: 1.15rem; color: #d5d8dc; max-width: 52ch; margin: 0 0 32px; }
+    .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* Sections */
+    section { padding: 80px 0; }
+    .eyebrow { color: var(--accent); font-weight: 700; text-transform: uppercase; font-size: .8rem; letter-spacing: .1em; margin: 0 0 8px; }
+    h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin: 0 0 16px; line-height: 1.2; }
+    .lead { color: var(--muted); max-width: 60ch; margin: 0 0 40px; }
+
+    .grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 28px;
+    }
+    .card .icon {
+      width: 48px; height: 48px; border-radius: 10px; display: grid; place-items: center;
+      background: #fbeee4; color: var(--accent); margin-bottom: 16px;
+    }
+    .card h3 { margin: 0 0 8px; font-size: 1.2rem; }
+    .card p { margin: 0 0 12px; color: var(--muted); }
+    .card ul { margin: 0; padding-left: 18px; color: var(--muted); }
+    .card li { margin: 4px 0; }
+
+    .why { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .points { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .point h3 { margin: 0 0 6px; font-size: 1.05rem; }
+    .point p { margin: 0; color: var(--muted); }
+    .point::before {
+      content: ""; display: block; width: 32px; height: 4px; background: var(--accent);
+      border-radius: 2px; margin-bottom: 14px;
+    }
+
+    /* Contact */
+    .contact-box {
+      background: var(--dark); color: #fff; border-radius: 14px; padding: 48px;
+      display: grid; gap: 32px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); align-items: center;
+    }
+    .contact-box h2 { color: #fff; }
+    .contact-box p { color: #c9cdd2; margin: 0; }
+    .contact-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+    .contact-list li { display: flex; gap: 12px; align-items: center; }
+    .contact-list a { text-decoration: none; font-weight: 600; font-size: 1.1rem; }
+    .contact-list a:hover { text-decoration: underline; }
+    .contact-list svg { flex: none; color: var(--accent); }
+
+    footer { padding: 32px 0; color: var(--muted); font-size: .9rem; text-align: center; }
+
+    @media (max-width: 640px) {
+      nav ul { display: none; }
+      .hero { padding: 64px 0 56px; }
+      section { padding: 56px 0; }
+      .contact-box { padding: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="wrap nav">
+      <a href="#" class="logo">NG <span>Construction</span></a>
+      <nav>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#why">Why us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="#contact" class="btn">Free quote</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>Quality building work, done properly.</h1>
+      <p>From full renovations to bespoke joinery and a fresh coat of paint, NG Construction delivers reliable, tidy and well-finished work for homes and businesses.</p>
+      <div class="actions">
+        <a href="#contact" class="btn">Get a free quote</a>
+        <a href="#services" class="btn ghost">Our services</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <p class="eyebrow">What we do</p>
+      <h2>Our services</h2>
+      <p class="lead">One trusted team for every stage of your project, from structural work to the finishing touches.</p>
+
+      <div class="grid">
+        <article class="card">
+          <div class="icon" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg>
+          </div>
+          <h3>Building renovations</h3>
+          <p>Transform your space with renovations managed from start to finish.</p>
+          <ul>
+            <li>Extensions &amp; alterations</li>
+            <li>Kitchen &amp; bathroom refits</li>
+            <li>Internal walls &amp; layout changes</li>
+            <li>Plastering &amp; general repairs</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="icon" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 12-8.5 8.5a2.12 2.12 0 0 1-3-3L12 9"/><path d="M17.64 15 22 10.64"/><path d="m20.91 11.7-1.25-1.25a2 2 0 0 1-.6-1.41V7.86l-2.6-2.6a5 5 0 0 0-3.53-1.46H9.5l.92.82A6.18 6.18 0 0 1 12.5 9.2v1.24l2 2h1.17a2 2 0 0 1 1.41.59l1.25 1.25"/></svg>
+          </div>
+          <h3>Carpentry &amp; joinery</h3>
+          <p>Skilled timber work, fitted and finished to a high standard.</p>
+          <ul>
+            <li>Doors, frames &amp; skirting</li>
+            <li>Staircases &amp; banisters</li>
+            <li>Fitted wardrobes &amp; shelving</li>
+            <li>Flooring &amp; decking</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="icon" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="16" height="6" rx="1.5"/><path d="M19 6h2v5h-9v3"/><rect x="10" y="14" width="4" height="7" rx="1"/></svg>
+          </div>
+          <h3>Painting &amp; decorating</h3>
+          <p>A clean, lasting finish inside and out, with careful prep every time.</p>
+          <ul>
+            <li>Interior &amp; exterior painting</li>
+            <li>Wallpapering</li>
+            <li>Woodwork &amp; gloss finishes</li>
+            <li>Surface preparation &amp; repairs</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" class="why">
+    <div class="wrap">
+      <p class="eyebrow">Why choose us</p>
+      <h2>Work you can rely on</h2>
+      <p class="lead">We treat every job like it's our own home.</p>
+      <div class="points">
+        <div class="point">
+          <h3>Free, honest quotes</h3>
+          <p>Clear pricing up front with no hidden extras.</p>
+        </div>
+        <div class="point">
+          <h3>Experienced tradesmen</h3>
+          <p>Years of hands-on experience across all three trades.</p>
+        </div>
+        <div class="point">
+          <h3>Clean &amp; tidy</h3>
+          <p>We respect your home and leave it as we found it, only better.</p>
+        </div>
+        <div class="point">
+          <h3>Fully insured</h3>
+          <p>Peace of mind on every project, big or small.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-box">
+        <div>
+          <p class="eyebrow">Get in touch</p>
+          <h2>Ready to start your project?</h2>
+          <p>Call, text or email for a free, no-obligation quote. We cover [YOUR AREA] and surrounding areas.</p>
+        </div>
+        <ul class="contact-list">
+          <li>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:+440000000000">[PHONE NUMBER]</a>
+          </li>
+          <li>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+            <a href="mailto:hello@example.com">[EMAIL ADDRESS]</a>
+          </li>
+          <li>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>[YOUR AREA]</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      &copy; <span id="year"></span> NG Construction. All rights reserved.
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
