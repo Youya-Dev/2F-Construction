@@ -108,14 +108,6 @@ document.querySelectorAll('.carousel').forEach(carousel => {
       if (err) err.textContent = msg;
       if (msg && !firstBad) firstBad = input;
     });
-    // Need at least a phone number or an email address
-    const phone = form.phone, email = form.email;
-    const reachErr = form.querySelector('#phone-error');
-    if (!phone.value.trim() && !email.value.trim()) {
-      phone.setAttribute('aria-invalid', 'true');
-      reachErr.textContent = 'Please give a phone number or an email address so we can reply.';
-      if (!firstBad) firstBad = phone;
-    }
     if (firstBad) firstBad.focus();
     return !firstBad;
   }
@@ -147,7 +139,7 @@ document.querySelectorAll('.carousel').forEach(carousel => {
       showStatus('err', 'Your enquiry could not be sent. Please try again, or call or email us directly.');
     } finally {
       submit.disabled = false;
-      submit.textContent = 'Send enquiry';
+      submit.textContent = 'Submit';
     }
   });
 

@@ -29,83 +29,65 @@
   </header>
 
   <main>
-    <section class="hero small">
-      <div class="wrap">
-        <p class="eyebrow">Contact</p>
-        <h1>Request a free quote</h1>
-        <p>Fill in the form and we will get back to you within 1 working day. Prefer to talk? Call or email us directly.</p>
-      </div>
-    </section>
-
-    <section>
+    <section class="contact-page">
       <div class="wrap contact-layout">
-        <form class="quote" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
-          <input type="hidden" name="_subject" value="New quote request from the 2F Construction website">
-          <div class="hp" aria-hidden="true">
-            <label for="website">Leave this field empty</label>
-            <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
-          </div>
-
-          <div class="field">
-            <label for="name">Your name</label>
-            <input id="name" name="name" type="text" autocomplete="name" required data-check="Please enter your name.">
-            <span class="error" id="name-error" aria-live="polite"></span>
-          </div>
-          <div class="field">
-            <label for="area">Town or postcode <span class="hint">(optional)</span></label>
-            <input id="area" name="area" type="text" autocomplete="postal-code">
-          </div>
-          <div class="field">
-            <label for="phone">Phone number</label>
-            <input id="phone" name="phone" type="tel" autocomplete="tel" pattern="[0-9 +()-]{7,}" data-check="" data-format="Please enter a valid phone number.">
-            <span class="error" id="phone-error" aria-live="polite"></span>
-          </div>
-          <div class="field">
-            <label for="email">Email address</label>
-            <input id="email" name="email" type="email" autocomplete="email" data-check="" data-format="Please enter a valid email address, like name@example.com.">
-            <span class="error" id="email-error" aria-live="polite"></span>
-          </div>
-          <div class="field full">
-            <label for="service">What do you need?</label>
-            <select id="service" name="service">
-                <option value="renovations">Building renovations</option>
-                <option value="carpentry">Carpentry &amp; joinery</option>
-                <option value="painting">Painting &amp; decorating</option>
-                <option value="other" selected>Something else / not sure yet</option>
-            </select>
-          </div>
-          <div class="field full">
-            <label for="message">Tell us about your project</label>
-            <textarea id="message" name="message" required data-check="Please tell us a little about the job." placeholder="For example: the room or area, rough size, what you'd like done and when you'd like it done by."></textarea>
-            <span class="error" id="message-error" aria-live="polite"></span>
-          </div>
-          <fieldset class="field full">
-            <legend>Best way to reach you</legend>
-            <div class="radios">
-              <label><input type="radio" id="contact-phone" name="contact_by" value="phone" checked> Phone</label>
-              <label><input type="radio" id="contact-email" name="contact_by" value="email"> Email</label>
-              <label><input type="radio" id="contact-either" name="contact_by" value="either"> Either</label>
-            </div>
-          </fieldset>
-
-          <p class="form-status" role="status" hidden></p>
-          <button type="submit" class="btn">Send enquiry</button>
-        </form>
-
-        <aside class="contact-side">
-          <div class="contact-box">
-            <div>
-              <h2>Contact details</h2>
-              <p>We cover [YOUR AREA] and surrounding areas.</p>
-            </div>
-            <ul class="contact-list">
-              <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+440000000000">[PHONE NUMBER]</a></li>
-              <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><a href="mailto:hello@example.com">[EMAIL ADDRESS]</a></li>
-              <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>[YOUR AREA]</span></li>
-              <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>[OPENING HOURS]</span></li>
-            </ul>
-          </div>
+        <aside class="contact-panel" aria-label="Contact details">
+          <ul>
+            <li><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg><div><span>[NAME 1]</span><a href="tel:+440000000000">[PHONE NUMBER 1]</a></div></li>
+            <li><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><div><span>[NAME 2]</span><a href="tel:+440000000000">[PHONE NUMBER 2]</a></div></li>
+            <li><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65-4.8A8.5 8.5 0 1 1 7.8 19.4z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-2-2l.8-1-1-2z"/></svg><div><span>WhatsApp</span><a href="https://wa.me/440000000000">Start chatting</a></div></li>
+            <li><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><div><span>Email</span><a href="mailto:hello@example.com">Click to email</a></div></li>
+            <li><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><div><span>Office location</span><address><strong>2F Construction</strong><br>[Street]<br>[Town]<br>[County]<br>[Postcode]</address></div></li>
+          </ul>
         </aside>
+
+        <div class="enquiry">
+          <p class="eyebrow">Send an enquiry</p>
+          <h1>Fill out this form with your questions and comments</h1>
+          <p class="intro">We will be back in touch as soon as possible. If your question is urgent, you might want to call us instead.</p>
+
+          <form class="quote" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="New enquiry from the 2F Construction website">
+            <div class="hp" aria-hidden="true">
+              <label for="website">Leave this field empty</label>
+              <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="field">
+              <label for="name">Your name<abbr title="required">*</abbr></label>
+              <input id="name" name="name" type="text" autocomplete="name" required data-check="Please enter your name.">
+              <span class="error" id="name-error" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="phone">Phone number<abbr title="required">*</abbr></label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" required pattern="[0-9 +()-]{7,}" data-check="Please enter your phone number." data-format="Please enter a valid phone number.">
+              <span class="error" id="phone-error" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="email">Email address</label>
+              <input id="email" name="email" type="email" autocomplete="email" data-check="" data-format="Please enter a valid email address, like name@example.com.">
+              <span class="error" id="email-error" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="service">How can we help?</label>
+              <select id="service" name="service">
+              <option value="" selected>Please select an option…</option>
+              <option value="renovations">Building renovations</option>
+              <option value="carpentry">Carpentry &amp; joinery</option>
+              <option value="painting">Painting &amp; decorating</option>
+              <option value="other">Something else</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="message">Your message<abbr title="required">*</abbr></label>
+              <textarea id="message" name="message" required data-check="Please enter your message." placeholder="Please enter your message…"></textarea>
+              <span class="error" id="message-error" aria-live="polite"></span>
+            </div>
+
+            <p class="form-status" role="status" hidden></p>
+            <button type="submit" class="btn">Submit</button>
+          </form>
+        </div>
       </div>
     </section>
 
