@@ -389,7 +389,7 @@ body { font-family: var(--body); font-size: 17px; }
 h1, h2, h3, .logo, .btn { font-family: var(--display); }
 h1, h2 { font-weight: 700; letter-spacing: 0; }
 h3 { font-weight: 600; font-size: 1.25rem; }
-.eyebrow { font-family: var(--body); font-weight: 700; letter-spacing: .14em; display: flex; align-items: center; gap: 8px; }
+.eyebrow { font-family: var(--body); font-weight: 700; letter-spacing: .14em; }
 
 /* Plain, solid buttons */
 .btn {
@@ -517,40 +517,3 @@ footer .btn:hover { text-decoration: none; }
 .signpost span { margin-top: auto; padding-top: 10px; color: var(--accent); font-weight: 700; }
 .signpost span::after { content: " \2192"; }
 .signpost:hover span { text-decoration: underline; }
-
-/* ---------- Bespoke details: roofline logo, timber frame, tape measure ---------- */
-.logo .mark { display: none; }
-.logo-mark { width: 50px; height: 42px; flex: none; }
-.logo-mark .letters { fill: #fff; }
-.logo-mark .roof { fill: none; stroke: #7fd3cd; stroke-width: 9; stroke-linejoin: miter; }
-.logo-mark .roof-fill { fill: #7fd3cd; }
-.logo .word { font-size: 1.35rem; letter-spacing: .01em; }
-
-/* Small roof peak in front of section labels */
-.eyebrow::before {
-  content: ""; width: 9px; height: 9px; background: none; border-radius: 0;
-  border-top: 2px solid currentColor; border-left: 2px solid currentColor;
-  transform: translateY(3px) rotate(45deg); margin: 0 3px 0 2px; flex: none; box-sizing: content-box;
-}
-
-/* Faint timber-frame sketch in the banners */
-.hero .frame {
-  position: absolute; right: -40px; bottom: -30px; width: min(620px, 55vw); height: auto;
-  color: #7fd3cd; opacity: .09; z-index: -1; pointer-events: none;
-}
-.hero.small .frame { width: min(420px, 45vw); right: 4%; bottom: -60px; opacity: .08; }
-.home-hero .frame { right: -30px; bottom: -90px; opacity: .06; }
-
-/* Tape-measure ticks along the top of the jobs strip */
-.strip { position: relative; padding-top: 26px; }
-.strip::before {
-  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 12px;
-  background:
-    repeating-linear-gradient(90deg, rgba(255,255,255,.55) 0 2px, transparent 2px 60px),
-    repeating-linear-gradient(90deg, rgba(255,255,255,.35) 0 1px, transparent 1px 12px);
-  background-size: 100% 12px, 100% 6px; background-repeat: repeat-x;
-}
-
-@media (max-width: 760px) {
-  .hero .frame { width: 90vw; right: -20vw; opacity: .06; }
-}
